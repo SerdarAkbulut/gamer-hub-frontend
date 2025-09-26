@@ -1,6 +1,5 @@
 import request from "@/app/api/request";
 import { useQuery } from "@tanstack/react-query";
-const baseURL = "http://localhost:3000/api/";
 
 export const getGames = (page: number) => {
   return useQuery({
@@ -39,5 +38,18 @@ export const getSearchGames = (q: string, page: number) => {
   return useQuery({
     queryKey: ["searchGames", q, page],
     queryFn: () => request.Game.searchGames(q, page),
+  });
+};
+
+export const getUserFavoriGames = (userId: number) => {
+  return useQuery({
+    queryKey: ["userFavoriGames", userId],
+    queryFn: () => request.Game.userFavoritedGames(userId),
+  });
+};
+export const getUserLikedGames = (userId: number) => {
+  return useQuery({
+    queryKey: ["userLikedGames", userId],
+    queryFn: () => request.Game.userLikedGames(userId),
   });
 };

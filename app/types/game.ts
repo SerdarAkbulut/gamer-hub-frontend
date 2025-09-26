@@ -32,3 +32,40 @@ export interface GameDetailsProps {
     }
   ];
 }
+
+export interface GamePosts {
+  postTitle?: string;
+  gameName?: string;
+  postText?: string;
+  userName?: string;
+  gameId?: number;
+  postId: number;
+  userId?: number;
+  deletePost?: boolean;
+}
+export interface AllPostProps {
+  gameId?: number;
+  gameName?: string;
+  postId?: number;
+  postText?: string;
+  postTitle?: string;
+  userId?: number;
+  userName?: string;
+  id: number;
+  user: {
+    userName: string;
+  };
+}
+export interface FollowGamesAndUserProps {
+  gameId?: number;
+  gameName?: string;
+  postId?: number;
+  postText?: string;
+  postTitle?: string;
+  userId?: number;
+  userName?: string;
+  id: number;
+  user: {
+    userName: string;
+  };
+}

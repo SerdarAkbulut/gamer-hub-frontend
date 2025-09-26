@@ -12,8 +12,11 @@ export default function RootLayout({
   return (
     <html lang="tr" className="h-full mh-h-screen">
       <body className=" min-h-screen flex flex-col max-w-screen">
-        <Header />
-        <ConditionalLayout>{children}</ConditionalLayout>
+        <ConditionalLayout>
+          <Header />
+
+          {children}
+        </ConditionalLayout>
 
         <ToastContainer
           position="bottom-right"

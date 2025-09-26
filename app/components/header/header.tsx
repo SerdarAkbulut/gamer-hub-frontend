@@ -8,16 +8,18 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import ClickAwayListener from "@mui/material/ClickAwayListener"; // ✅ EKLENDİ
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import PersonIcon from "@mui/icons-material/Person";
 import { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
 
 const Header: React.FC = () => {
-  const [useToken, setUseToken] = useState();
+  const token = useSelector((state: RootState) => state?.token?.token);
   const [searchTerm, setSearchTerm] = useState("");
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
@@ -27,7 +29,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLogged(!!token);
-  }, [useToken]);
+  }, [token]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -42,7 +44,6 @@ const Header: React.FC = () => {
 
   const handleClickRemoveToken = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("token_expiry");
     // setUseToken("");
   };
 
@@ -121,7 +122,6 @@ const Header: React.FC = () => {
           </Link>
         </div>
 
-        {/* Orta - Arama */}
         <div className="flex w-full justify-center h-full">
           <Paper
             component="form"
@@ -148,7 +148,6 @@ const Header: React.FC = () => {
           </Paper>
         </div>
 
-        {/* Sağ - Kullanıcı veya Giriş/Kayıt */}
         <div className="flex items-center gap-4">
           {isLogged ? (
             <ClickAwayListener onClickAway={() => setShowUserMenu(false)}>

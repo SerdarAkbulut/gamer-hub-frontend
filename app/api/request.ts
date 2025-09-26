@@ -65,6 +65,9 @@ const Game = {
   getGameDetails: (gameId: number) => queries.get(`/gameDetails?id=${gameId}`),
   searchGames: (q: string, page: number) =>
     queries.get(`/search?q=${encodeURIComponent(q)}&page=${page}`),
+  userLikedGames: (userId: number) => queries.get(`/userLikedGames/${userId}`),
+  userFavoritedGames: (userId: number) =>
+    queries.get(`/userFavoritedGames/${userId}`),
 };
 
 const LikedGames = {
@@ -113,7 +116,7 @@ const Post = {
     queries.post("/comment", { postId, reply }),
   addFeaturePst: (postId: number) => queries.post("/featurePost", { postId }),
   postList: () => queries.get("/postList"),
-  postDetails: () => queries.get("/postDetails"),
+  postDetails: (postId: number) => queries.get(`/postDetails/${postId}`),
   myFavoriGamesPostList: () => queries.get("/favoriGame/postList"),
   userPosts: (userId: number) => queries.get(`/userPosts/${userId}`),
   myPosts: () => queries.get("/myPosts"),
@@ -140,6 +143,7 @@ const Auth = {
   checkResetToken: (token: string) =>
     queries.get(`/check-reset-token/${token}`),
 };
+
 const request = {
   LikedGames,
   Game,
