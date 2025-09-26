@@ -13,7 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import { updateLike } from "@/app/hooks/Like/useLike";
-import { updateFavori } from "@/app/hooks/favori/userFavori";
+import { updateFavori } from "@/app/hooks/favori/useFavori";
 import { toast } from "react-toastify";
 import { CardListProps } from "@/app/types/game";
 
@@ -28,8 +28,9 @@ function CardComponent({
 }: CardListProps) {
   const [likeState, setLikeState] = useState<boolean | null>(isLiked);
   const [favorite, setFavorite] = useState<boolean>(isFavorited);
-  const { mutate: liked, isSuccess: successLike } = updateLike();
-  const { mutate: favorited, isSuccess: successFavroi } = updateFavori();
+  const { mutate: liked } = updateLike();
+  const { mutate: favorited } = updateFavori();
+  const token = localStorage.getItem("token");
 
   return (
     <div>
@@ -58,7 +59,7 @@ function CardComponent({
                     likeState === true ? "text-blue-500" : "text-gray-400"
                   }`}
                   onClick={() => {
-                    if (!successLike) {
+                    if (!token) {
                       toast.error("Giriş yapmalısınız");
                       return;
                     }
@@ -68,7 +69,7 @@ function CardComponent({
                       gameId: id,
                       gameName: name,
                       gameImage: cover_url,
-                      isLiked: isLiked || false,
+                      isLiked: isLiked || true,
                     });
                   }}
                 />
@@ -83,7 +84,7 @@ function CardComponent({
                     likeState === false ? "text-red-500" : "text-gray-400"
                   }`}
                   onClick={() => {
-                    if (!successLike) {
+                    if (!token) {
                       toast.error("Giriş yapmalısınız");
                       return;
                     }
@@ -110,16 +111,19 @@ function CardComponent({
                   favorite ? "text-red-500" : "text-gray-400"
                 }`}
                 onClick={() => {
-                  if (!successFavroi) {
+                  if (!token) {
                     toast.error("Giriş yapmalısınız");
                     return;
                   }
-                  setFavorite(!favorite);
+
+                  const newFavorite = !favorite;
+                  setFavorite(newFavorite);
+
                   favorited({
                     gameId: id,
                     gameImage: cover_url,
                     gameName: name,
-                    isFavorited: isFavorited,
+                    isFavorited: newFavorite,
                   });
                 }}
               />

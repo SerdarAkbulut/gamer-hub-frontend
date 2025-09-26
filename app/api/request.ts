@@ -12,13 +12,10 @@ axios.interceptors.response.use(
 axios.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
-    const anonToken = localStorage.getItem("anonToken");
 
     if (config.headers) {
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      } else if (anonToken) {
-        config.headers.Authorization = `Bearer ${anonToken}`;
+        config.headers.Authorization = `${token}`;
       }
     }
 
@@ -94,10 +91,62 @@ const FavoriGames = {
   getUserFavoriGames: (userId: number) =>
     queries.get(`/userFavoriGames/${userId}`),
 };
+
+const Follow = {
+  followUser: (followingId: number) =>
+    queries.post("/addFollow", { followingId }),
+  unFollowUser: (followingId: number) =>
+    queries.post("/unFollow", { followingId }),
+  userFollower: (id: number) => queries.get(`/userFollower/${id}`),
+  userFollowing: (id: number) => queries.get(`/userFollowing/${id}`),
+};
+const Post = {
+  addPost: (
+    gameId: number,
+    gameName: string,
+    postTitle: string,
+    postText: string
+  ) => queries.post("/addPost", { gameId, gameName, postTitle, postText }),
+  deletePost: (postId: number) => queries.delete(`/deletePost/${postId}`),
+  savePost: (postId: number) => queries.post("/addSavePost", { postId }),
+  addComment: (postId: number, reply: string) =>
+    queries.post("/comment", { postId, reply }),
+  addFeaturePst: (postId: number) => queries.post("/featurePost", { postId }),
+  postList: () => queries.get("/postList"),
+  postDetails: () => queries.get("/postDetails"),
+  myFavoriGamesPostList: () => queries.get("/favoriGame/postList"),
+  userPosts: (userId: number) => queries.get(`/userPosts/${userId}`),
+  myPosts: () => queries.get("/myPosts"),
+  savedPosts: () => queries.get("/savedPost"),
+  featurePosts: () => queries.get("/featurePosts"),
+};
+
+const Auth = {
+  register: (email: string, userName: string, password: string) =>
+    queries.post("/register", { email, userName, password }),
+  login: (email: string, password: string) =>
+    queries.post("/login", { email, password }),
+  userDetails: (userId: number) => queries.get(`/user/${userId}`),
+  updateProfile: (
+    userName: string,
+    email: string,
+    currentPassword: string,
+    password: string
+  ) => queries.put("/user", { userName, email, currentPassword, password }),
+  forgotPassword: (email: string) =>
+    queries.post("/forgot-password", { email }),
+  resetPassword: (token: string, newPassword: string) =>
+    queries.post("/reset-password", { token, newPassword }),
+  checkResetToken: (token: string) =>
+    queries.get(`/check-reset-token/${token}`),
+};
 const request = {
   LikedGames,
   Game,
   FavoriGames,
+  Follow,
+  Post,
+  Auth,
 };
 
 export default request;

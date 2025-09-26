@@ -41,14 +41,3 @@ export const getSearchGames = (q: string, page: number) => {
     queryFn: () => request.Game.searchGames(q, page),
   });
 };
-export async function getGamesForSeo(page: number) {
-  const res = await fetch(`${baseURL}games?page=${page}`);
-  const data = await res.json();
-  return data;
-}
-
-export async function getLastGamesForSeo(page: number) {
-  const res = await fetch(`${baseURL}games?page=${page}`);
-  const data = await res.json();
-  return data;
-}
