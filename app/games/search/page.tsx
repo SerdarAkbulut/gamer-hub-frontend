@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import SearchGamesComponent from "../components/searchGamesComponent";
 
 function Page() {
   return (
-    <div>
+    <Suspense fallback={<div>Loading...</div>}>
       <SearchGamesComponent />
-    </div>
+    </Suspense>
   );
 }
 

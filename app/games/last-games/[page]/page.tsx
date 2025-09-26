@@ -2,11 +2,11 @@ import React from "react";
 import LastGamesComponent from "../../components/lastGamesComponent";
 import Link from "next/link";
 import { Button } from "@mui/material";
-import { Metadata } from "next";
+import { Props } from "@/app/types/pageProps";
 
 async function Page({ params }: Props) {
   const { page } = await params;
-  const usePage = parseInt(page);
+  const usePage = page || 1;
   return (
     <div>
       <LastGamesComponent page={usePage} />

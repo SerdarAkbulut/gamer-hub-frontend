@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Button } from "@mui/material";
 import PopulerGamesComponent from "../../components/populerGamesComponent";
+import { Props } from "@/app/types/pageProps";
 
 export default async function Page({ params }: Props) {
   const { page } = await params;
-  const usePage = parseInt(page);
+  const usePage = page || 1;
 
   return (
     <>

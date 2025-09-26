@@ -1,3 +1,3 @@
 export interface Props {
-  params: { page?: string; gameId?: number; postId?: number; userId?: number };
+  params: { page?: number; gameId?: number; postId?: number; userId?: number };
 }
