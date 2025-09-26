@@ -13,13 +13,13 @@ export default async function Page({ params }: Props) {
 
       <div className="flex justify-center gap-4 mt-5">
         {usePage > 1 && (
-          <Link href={`/games/populer-games/${usePage - 1}`}>
+          <Link href={`/games/populer-games/${Number(page) - 1}`}>
             <Button variant="contained" color="primary">
               Geri
             </Button>
           </Link>
         )}
-        <Link href={`/games/populer-games/${usePage + 1}`}>
+        <Link href={`/games/populer-games/${Number(usePage) + 1}`}>
           <Button variant="contained" color="primary">
             İleri
           </Button>

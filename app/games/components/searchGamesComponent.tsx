@@ -37,13 +37,15 @@ function SearchGamesComponent() {
       </div>
       <div className="flex justify-center gap-4 mt-5">
         {page > 1 && (
-          <Link href={`/games/search?q=${searchQuery}&page=${page - 1}`}>
+          <Link
+            href={`/games/search?q=${searchQuery}&page=${Number(page) - 1}`}
+          >
             <Button variant="contained" color="primary">
               Geri
             </Button>
           </Link>
         )}
-        <Link href={`/games/search?q=${searchQuery}&page=${page + 1}`}>
+        <Link href={`/games/search?q=${searchQuery}&page=${Number(page) + 1}`}>
           <Button variant="contained" color="primary">
             İleri
           </Button>
