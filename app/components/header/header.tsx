@@ -154,7 +154,7 @@ const Header: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="hover:opacity-80"
+                  className="hover:opacity-80 cursor-pointer"
                 >
                   <PersonIcon fontSize="large" />
                 </button>
@@ -196,7 +196,7 @@ const Header: React.FC = () => {
                     Beğenilenler
                   </Link>
                   <button
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-200 hover:cursor-pointer"
                     onClick={handleClickRemoveToken}
                   >
                     Çıkış Yap

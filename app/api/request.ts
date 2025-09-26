@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000/api/";
+axios.defaults.baseURL = "https://project-a-06ts.onrender.com/api/";
 
 axios.interceptors.response.use(
   (response) => response,
