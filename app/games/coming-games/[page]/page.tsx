@@ -2,10 +2,11 @@ import React from "react";
 import ComingGamesComponent from "../../components/comingGamesComponent";
 import Link from "next/link";
 import { Button } from "@mui/material";
+import { Props } from "@/app/types/pageProps";
 
 async function page({ params }: Props) {
   const { page } = await params;
-  const usePage = parseInt(page);
+  const usePage = page || 1;
   return (
     <div>
       <ComingGamesComponent page={usePage} />
