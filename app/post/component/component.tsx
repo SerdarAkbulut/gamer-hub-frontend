@@ -29,7 +29,7 @@ function PostDetails({ postId }: { postId: number }) {
                 component={BookmarkIcon}
                 inheritViewBox
                 className={`h-8 w-8 hover:cursor-pointer ${
-                  post.isSaved ? "text-black" : "text-white"
+                  post.isSaved ? "text-[#e01919]" : "text-white"
                 }`}
                 onClick={() => mutate(postId)}
               />

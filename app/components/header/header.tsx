@@ -17,6 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
+import { ref } from "yup";
 
 const Header: React.FC = () => {
   const token = useSelector((state: RootState) => state?.token?.token);
@@ -44,7 +45,7 @@ const Header: React.FC = () => {
 
   const handleClickRemoveToken = () => {
     localStorage.removeItem("token");
-    // setUseToken("");
+    window.location.reload();
   };
 
   const toggleDrawer = (open: boolean) => () => {
