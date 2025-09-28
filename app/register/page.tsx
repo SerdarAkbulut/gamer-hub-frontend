@@ -2,7 +2,7 @@
 
 import { Button, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Register } from "../hooks/auth/useAuth";
@@ -34,9 +34,11 @@ function Page() {
     },
   });
 
-  if (isSuccess) {
-    router.push("/login");
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      router.push("/login");
+    }
+  }, [isSuccess, router]);
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
