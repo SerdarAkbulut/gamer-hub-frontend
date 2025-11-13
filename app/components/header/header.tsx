@@ -206,8 +206,11 @@ const Header: React.FC = () => {
               </div>
             </ClickAwayListener>
           ) : (
-            <div className="flex gap-2">
-              <Link href="/login" className="hover:text-gray-300 transition">
+            <div className="flex gap-5 mr-auto">
+              <Link
+                href="/login"
+                className="hover:text-gray-300 transition flex"
+              >
                 Giriş Yap
               </Link>
               <Link href="/register" className="hover:text-gray-300 transition">

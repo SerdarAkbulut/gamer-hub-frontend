@@ -10,7 +10,7 @@ function LastGamesComponent({ page }: { page: number }) {
 
   return (
     <div>
-      <div className="grid grid-cols-4 p-10 gap-10">
+      <div className="grid grid-cols-6 p-10 gap-10">
         {data?.map((item: GameProps, index: number) => (
           <div key={index}>
             <CardComponent {...item} />

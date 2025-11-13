@@ -44,7 +44,7 @@ function CardComponent({
           <img
             src={cover_url}
             alt="Resim Bulunamadı"
-            className="object-contain h-[500px] w-full "
+            className="object-contain  w-full  h-96"
           />
         </Link>
         {!isHidden && (
