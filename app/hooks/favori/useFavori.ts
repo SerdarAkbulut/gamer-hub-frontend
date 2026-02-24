@@ -1,5 +1,5 @@
 import request from "@/app/api/request";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const updateFavori = () => {
   return useMutation({
@@ -11,9 +11,15 @@ export const updateFavori = () => {
     }) =>
       request.FavoriGames.addOrUpdateFavoriGames(
         values.gameId,
-        values.gameImage,
         values.gameName,
-        values.isFavorited
+        values.gameImage,
+        values.isFavorited,
       ),
+  });
+};
+export const getFavoriGames = () => {
+  return useQuery({
+    queryKey: ["favoriGames"],
+    queryFn: () => request.FavoriGames.getFavoriGames(),
   });
 };

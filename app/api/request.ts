@@ -1,14 +1,14 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-axios.defaults.baseURL = "https://project-a-06ts.onrender.com/api/";
-// axios.defaults.baseURL = "http://localhost:3000/api/";
+// axios.defaults.baseURL = "https://project-a-06ts.onrender.com/api/";
+axios.defaults.baseURL = "http://localhost:3000/api/";
 
 axios.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
     console.log("error interceptor");
     return Promise.reject(error);
-  }
+  },
 );
 axios.interceptors.request.use(
   (config) => {
@@ -22,7 +22,7 @@ axios.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 const getHeaders = (mediaType?: string) => {
@@ -77,7 +77,7 @@ const LikedGames = {
     gameId: number,
     gameName: string,
     gameImage: string,
-    isLiked: boolean
+    isLiked: boolean,
   ) => queries.post("/likedGames", { gameId, gameImage, gameName, isLiked }),
   getUserLikedGames: (userId: number) =>
     queries.get(`/userLikedGames:/${userId}`),
@@ -89,7 +89,7 @@ const FavoriGames = {
     gameId: number,
     gameName: string,
     gameImage: string,
-    isFavorited: boolean
+    isFavorited: boolean,
   ) =>
     queries.post(`/favoriGames`, { gameId, gameImage, gameName, isFavorited }),
   getUserFavoriGames: (userId: number) =>
@@ -109,7 +109,7 @@ const Post = {
     gameId: number,
     gameName: string,
     postTitle: string,
-    postText: string
+    postText: string,
   ) => queries.post("/addPost", { gameId, gameName, postTitle, postText }),
   deletePost: (postId: number) => queries.delete(`/deletePost/${postId}`),
   savePost: (postId: number) => queries.post("/addSavePost", { postId }),
@@ -135,7 +135,7 @@ const Auth = {
     userName: string,
     email: string,
     currentPassword: string,
-    password: string
+    password: string,
   ) => queries.put("/user", { userName, email, currentPassword, password }),
   forgotPassword: (email: string) =>
     queries.post("/forgot-password", { email }),

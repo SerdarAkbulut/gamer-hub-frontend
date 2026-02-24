@@ -85,7 +85,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="bg-gray-800 text-white px-4 py-4 flex items-center justify-between shadow-md xl:flex xl:gap-12 md:gap-12">
+      <header className="bg-gray-800 text-white px-4 py-4 flex items-center justify-between shadow-md xl:flex xl:gap-12 md:gap-12 z-30">
         <div className="md:hidden">
           <IconButton onClick={toggleDrawer(true)} className="text-white">
             <MenuIcon />
@@ -99,8 +99,8 @@ const Header: React.FC = () => {
           </Drawer>
         </div>
 
-        <div className="hidden md:flex items-center gap-6 md:w-1/2">
-          <Link href="/" className="hover:text-gray-300 transition">
+        <div className="hidden md:flex items-center gap-6 md:w-1/2 ">
+          <Link href="/" className="hover:text-gray-300 transition ">
             Ana Sayfa
           </Link>
           <Link
@@ -167,7 +167,7 @@ const Header: React.FC = () => {
                   }`}
                 >
                   <Link
-                    href="/profile"
+                    href="/profile/settings"
                     className="block px-4 py-2 hover:bg-gray-200"
                   >
                     Ayarlar

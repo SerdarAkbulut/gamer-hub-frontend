@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import ClientProviders from "./provaider";
+import Header from "./components/header/header";
 
 export default function ConditionalLayout({
   children,
@@ -23,6 +24,8 @@ export default function ConditionalLayout({
 
   return (
     <ClientProviders>
+      <Header />
+
       <main className="flex-grow">{children}</main>
     </ClientProviders>
   );

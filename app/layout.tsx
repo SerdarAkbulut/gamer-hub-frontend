@@ -12,17 +12,16 @@ export default function RootLayout({
   return (
     <html lang="tr" className="h-full mh-h-screen">
       <body className=" min-h-screen flex flex-col max-w-screen">
-        <ConditionalLayout>
-          <Header />
-
-          {children}
-        </ConditionalLayout>
-
+        <ConditionalLayout>{children}</ConditionalLayout>
         <ToastContainer
           position="bottom-right"
           hideProgressBar
           theme="colored"
         />
+
+        <div className="mt-24">
+          <footer className="h-20 bg-amber-400">sssss</footer>
+        </div>
       </body>
     </html>
   );
